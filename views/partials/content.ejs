@@ -1,0 +1,119 @@
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>🎓 Welcome to Studix01.net</h1>
+    <p>Your Free Online Learning Platform for Success</p>
+    <p style="font-size: 1rem; opacity: 0.8;">Learn, Practice, Quiz & Master Your Subjects</p>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <form id="search-form" style="display: flex; gap: 0.5rem; width: 100%;">
+      <input type="text" id="search-input" placeholder="Search lessons, subjects, materials..." required>
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- Subject Categories -->
+  <section class="section">
+    <h2 class="section-title">📖 Explore Subjects</h2>
+    <div class="subjects-grid">
+      <% subjects.forEach(subject => { %>
+        <a href="/subject/<%= subject.id %>" style="text-decoration: none; color: inherit;">
+          <div class="card subject-card" style="background: <%= subject.color %>;">
+            <div class="icon"><%= subject.icon %></div>
+            <h3><%= subject.name %></h3>
+            <p><%= subject.lessons %> Lessons</p>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Popular Lessons -->
+  <section class="section">
+    <h2 class="section-title">⭐ Popular Lessons</h2>
+    <div class="lessons-grid">
+      <% lessons.slice(0, 6).forEach(lesson => { %>
+        <a href="/lesson/<%= lesson.id %>" style="text-decoration: none; color: inherit;">
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-primary"><%= lesson.class %></span>
+              <h3><%= lesson.title %></h3>
+              <div class="lesson-meta">
+                <span>📚 <%= lesson.subject %></span>
+                <span>👥 <%= lesson.views %> views</span>
+                <span>❤️ <%= lesson.likes %> likes</span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <button class="btn btn-primary btn-small" onclick="event.stopPropagation();">Read</button>
+              <button class="btn-icon" onclick="event.stopPropagation(); likeLessom(<%= lesson.id %>);">❤️</button>
+              <button class="btn-icon" onclick="event.stopPropagation(); saveLessom(<%= lesson.id %>);">📌</button>
+              <button class="btn-icon" onclick="event.stopPropagation(); shareLessom('<%= lesson.title %>');">📤</button>
+            </div>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Latest Study Materials -->
+  <section class="section">
+    <h2 class="section-title">📚 Latest Study Materials</h2>
+    <div class="lessons-grid">
+      <% lessons.slice(6, 10).forEach(lesson => { %>
+        <a href="/lesson/<%= lesson.id %>" style="text-decoration: none; color: inherit;">
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-success"><%= lesson.level %></span>
+              <h3><%= lesson.title %></h3>
+              <div class="lesson-meta">
+                <span>📖 <%= lesson.subject %></span>
+                <span>⏱️ 15 min read</span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <button class="btn btn-secondary btn-small" onclick="event.stopPropagation();">📥 Download</button>
+              <button class="btn-icon" onclick="event.stopPropagation(); saveLessom(<%= lesson.id %>);">💾</button>
+            </div>
+          </div>
+        </a>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section class="section">
+    <h2 class="section-title">🧪 Test Your Knowledge</h2>
+    <div style="display: flex; flex-direction: column; gap: 1rem;">
+      <% quizzes.forEach(quiz => { %>
+        <div class="card quiz-card">
+          <div class="quiz-info">
+            <h3><%= quiz.title %></h3>
+            <p style="color: var(--text-light);"><%= quiz.subject %> • <%= quiz.questions %> Questions</p>
+          </div>
+          <div class="quiz-stats">
+            <span>⏱️ <%= quiz.timeLimit %> min</span>
+            <a href="/quiz/<%= quiz.id %>" class="btn btn-primary">Start Quiz</a>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+
+  <!-- AI Study Assistant Section -->
+  <section class="ai-section">
+    <h2>🤖 AI Study Assistant</h2>
+    <p>Get instant help from our AI-powered study assistant. Ask questions about difficult topics and get detailed explanations.</p>
+    <a href="/ai-assistant" class="btn btn-primary">Try AI Assistant Now</a>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section" style="text-align: center;">
+    <h2 class="section-title">Ready to Start Learning?</h2>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/lessons" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">📖 Start Learning</a>
+      <a href="/quizzes" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">🧪 Take a Quiz</a>
+      <a href="/ai-assistant" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">🤖 Ask AI Helper</a>
+    </div>
+  </section>

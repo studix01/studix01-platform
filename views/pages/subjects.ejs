@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subjects - Studix01.net</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <a href="/" class="logo">📚 Studix01</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/subjects">Subjects</a></li>
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/quizzes">Quizzes</a></li>
+        <li><a href="/ai-assistant">AI Assistant</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>📚 All Subjects</h1>
+      <p>Choose a subject and start learning today</p>
+    </section>
+
+    <section class="section">
+      <div class="subjects-grid">
+        <% subjects.forEach(subject => { %>
+          <a href="/subject/<%= subject.id %>" style="text-decoration: none;">
+            <div class="card subject-card" style="background: <%= subject.color %>;">
+              <div class="icon"><%= subject.icon %></div>
+              <h3><%= subject.name %></h3>
+              <p><%= subject.lessons %> Lessons</p>
+            </div>
+          </a>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Studix01.net. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
