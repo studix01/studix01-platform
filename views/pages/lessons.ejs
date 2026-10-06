@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= subject.name %> | Studix01.net</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar container">
+      <a href="/" class="logo">📚 Studix01</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/subjects">Subjects</a></li>
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/quizzes">Quizzes</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" style="background: linear-gradient(135deg, <%= subject.color %>, #6366f1);">
+      <h1><%= subject.icon %> <%= subject.name %></h1>
+      <p><%= subject.lessons %> lessons available for this subject.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Lessons in <%= subject.name %></h2>
+      <div class="lessons-grid">
+        <% lessons.forEach(lesson => { %>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-primary"><%= lesson.class %></span>
+              <h3><%= lesson.title %></h3>
+              <div class="lesson-meta">
+                <span>📘 <%= lesson.subject %></span>
+                <span>👀 <%= lesson.views %></span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <a href="/lesson/<%= lesson.id %>" class="btn btn-primary btn-small">Read</a>
+              <button class="btn-icon" onclick="likeLessom(<%= lesson.id %>)">❤️</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom container">
+      <p>© 2024 Studix01.net</p>
+    </div>
+  </footer>
+  <script src="/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

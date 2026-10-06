@@ -3,52 +3,263 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subjects - Studix01.net</title>
+  <title>Studix01.net | Home</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
-    <div class="navbar">
+    <div class="navbar container">
       <a href="/" class="logo">📚 Studix01</a>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/books">Books & Notes</a></li>
+        <li><a href="/exercises">Exercises</a></li>
         <li><a href="/quizzes">Quizzes</a></li>
         <li><a href="/ai-assistant">AI Assistant</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
       </ul>
-      <button class="theme-toggle" id="theme-toggle">🌙</button>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+      <button class="mobile-menu">☰</button>
     </div>
   </header>
 
   <main class="container">
     <section class="hero">
-      <h1>📚 All Subjects</h1>
-      <p>Choose a subject and start learning today</p>
+      <h1>🎓 Welcome to Studix01.net</h1>
+      <p>Your free online learning platform for students.</p>
+      <form class="search-bar" action="/search" method="GET">
+        <input type="text" name="q" placeholder="Search for lessons and study materials" required>
+        <button type="submit">Search</button>
+      </form>
     </section>
 
     <section class="section">
+      <h2 class="section-title">📚 Subjects</h2>
       <div class="subjects-grid">
         <% subjects.forEach(subject => { %>
-          <a href="/subject/<%= subject.id %>" style="text-decoration: none;">
+          <a href="/subject/<%= subject.id %>" class="subject-link">
             <div class="card subject-card" style="background: <%= subject.color %>;">
               <div class="icon"><%= subject.icon %></div>
               <h3><%= subject.name %></h3>
-              <p><%= subject.lessons %> Lessons</p>
+              <p><%= subject.lessons %> lessons</p>
             </div>
           </a>
         <% }); %>
       </div>
     </section>
+
+    <section class="section">
+      <h2 class="section-title">⭐ Popular Lessons</h2>
+      <div class="lessons-grid">
+        <% lessons.slice(0, 6).forEach(lesson => { %>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-primary"><%= lesson.class %></span>
+              <h3><%= lesson.title %></h3>
+              <div class="lesson-meta">
+                <span>📘 <%= lesson.subject %></span>
+                <span>👀 <%= lesson.views %></span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <a href="/lesson/<%= lesson.id %>" class="btn btn-primary btn-small">Read</a>
+              <button class="btn-icon" onclick="likeLessom(<%= lesson.id %>)">❤️</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">📖 Latest Study Materials</h2>
+      <div class="lessons-grid">
+        <% lessons.slice(3, 9).forEach(lesson => { %>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-success"><%= lesson.level %></span>
+              <h3><%= lesson.title %></h3>
+              <div class="lesson-meta">
+                <span>📄 Notes</span>
+                <span>📥 Download</span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <a href="/lesson/<%= lesson.id %>" class="btn btn-secondary btn-small">Open</a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🧪 Quiz Section</h2>
+      <% quizzes.forEach(quiz => { %>
+        <div class="card quiz-card">
+          <div>
+            <h3><%= quiz.title %></h3>
+            <p><%= quiz.subject %> • <%= quiz.questions %> questions</p>
+          </div>
+          <div class="quiz-stats">
+            <span>⏱️ <%= quiz.timeLimit %> min</span>
+            <a href="/quiz/<%= quiz.id %>" class="btn btn-primary">Take Quiz</a>
+          </div>
+        </div>
+      <% }); %>
+    </section>
+
+    <section class="ai-section">
+      <h2>🤖 AI Study Assistant</h2>
+      <p>Ask any difficult lesson in simple words and get clear explanations instantly.</p>
+      <a href="/ai-assistant" class="btn btn-primary">Try AI Tutor</a>
+    </section>
+
+    <section class="section text-center">
+      <h2 class="section-title">🚀 Start Learning</h2>
+      <div class="cta-row">
+        <a href="/lessons" class="btn btn-primary">Start Learning</a>
+        <a href="/quizzes" class="btn btn-secondary">Take a Quiz</a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-bottom">
-      <p>&copy; 2024 Studix01.net. All rights reserved.</p>
+    <div class="footer-content container">
+      <div class="footer-section">
+        <h4>Studix01.net</h4>
+        <p>Free learning for students.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Links</h4>
+        <a href="/subjects">Subjects</a>
+        <a href="/lessons">Lessons</a>
+        <a href="/books">Books</a>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/dashboard">Dashboard</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 Studix01.net</p>
     </div>
   </footer>
-
   <script src="/js/script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

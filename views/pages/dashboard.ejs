@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subjects | Studix01.net</title>
+  <title>AI Study Assistant | Studix01.net</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,8 +14,6 @@
         <li><a href="/">Home</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="/lessons">Lessons</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/quizzes">Quizzes</a></li>
         <li><a href="/ai-assistant">AI Assistant</a></li>
       </ul>
       <button id="theme-toggle" class="theme-toggle">🌙</button>
@@ -24,21 +22,19 @@
 
   <main class="container">
     <section class="hero">
-      <h1>📚 All Subjects</h1>
-      <p>Study smarter across your school subjects.</p>
+      <h1>🤖 AI Study Assistant</h1>
+      <p>Ask about tough lessons and get clear explanations.</p>
     </section>
 
     <section class="section">
-      <div class="subjects-grid">
-        <% subjects.forEach(subject => { %>
-          <a href="/subject/<%= subject.id %>" class="subject-link">
-            <div class="card subject-card" style="background: <%= subject.color %>;">
-              <div class="icon"><%= subject.icon %></div>
-              <h3><%= subject.name %></h3>
-              <p><%= subject.lessons %> lessons</p>
-            </div>
-          </a>
-        <% }); %>
+      <div class="chat-container">
+        <div class="chat-messages" id="chat-messages">
+          <div class="message ai">Hello! Ask me any question about a lesson, formula, or exam topic.</div>
+        </div>
+        <div class="chat-input">
+          <input id="chat-input" type="text" placeholder="Type your question here...">
+          <button type="button" onclick="sendMessage()">Send</button>
+        </div>
       </div>
     </section>
   </main>
@@ -51,74 +47,6 @@
   <script src="/js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

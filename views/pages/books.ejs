@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= lesson.title %> | Studix01.net</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar container">
+      <a href="/" class="logo">📚 Studix01</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/subjects">Subjects</a></li>
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/quizzes">Quizzes</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <span class="badge badge-primary"><%= lesson.class %></span>
+        <h1 style="margin-top: 1rem;"><%= lesson.title %></h1>
+        <div class="lesson-meta" style="margin-top: 1rem;">
+          <span>📘 <%= lesson.subject %></span>
+          <span>📊 <%= lesson.level %></span>
+          <span>👀 <%= lesson.views %> views</span>
+          <span>❤️ <%= lesson.likes %> likes</span>
+        </div>
+
+        <div style="margin-top: 2rem; line-height: 1.9; color: var(--text-dark);">
+          <p><strong>Lesson summary:</strong> This lesson introduces key concepts and practical ideas to help students understand the topic deeply and apply it in school assessments.</p>
+          <p><strong>Key concepts:</strong> Definitions, examples, diagrams, and guided exercises are included to support active learning.</p>
+          <p><strong>Study tip:</strong> Read carefully, take notes, practice exercises, and revise the main ideas before your next test.</p>
+        </div>
+
+        <div class="lesson-actions" style="margin-top: 2rem;">
+          <button class="btn btn-primary" onclick="likeLessom(<%= lesson.id %>)">Like Lesson</button>
+          <button class="btn btn-secondary" onclick="saveLessom(<%= lesson.id %>)">Save Lesson</button>
+          <button class="btn btn-primary" onclick="shareLessom('<%= lesson.title %>')">Share</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom container">
+      <p>© 2024 Studix01.net</p>
+    </div>
+  </footer>
+  <script src="/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

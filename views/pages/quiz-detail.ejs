@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subjects | Studix01.net</title>
+  <title>Quizzes | Studix01.net</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,9 +14,8 @@
         <li><a href="/">Home</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="/lessons">Lessons</a></li>
-        <li><a href="/books">Books</a></li>
         <li><a href="/quizzes">Quizzes</a></li>
-        <li><a href="/ai-assistant">AI Assistant</a></li>
+        <li><a href="/revision">Revision</a></li>
       </ul>
       <button id="theme-toggle" class="theme-toggle">🌙</button>
     </div>
@@ -24,22 +23,23 @@
 
   <main class="container">
     <section class="hero">
-      <h1>📚 All Subjects</h1>
-      <p>Study smarter across your school subjects.</p>
+      <h1>🧪 Quizzes</h1>
+      <p>Take quizzes and track your progress from classwork to exam prep.</p>
     </section>
 
     <section class="section">
-      <div class="subjects-grid">
-        <% subjects.forEach(subject => { %>
-          <a href="/subject/<%= subject.id %>" class="subject-link">
-            <div class="card subject-card" style="background: <%= subject.color %>;">
-              <div class="icon"><%= subject.icon %></div>
-              <h3><%= subject.name %></h3>
-              <p><%= subject.lessons %> lessons</p>
-            </div>
-          </a>
-        <% }); %>
-      </div>
+      <% quizzes.forEach(quiz => { %>
+        <div class="card quiz-card">
+          <div>
+            <h3><%= quiz.title %></h3>
+            <p><%= quiz.subject %> • <%= quiz.questions %> questions</p>
+          </div>
+          <div class="quiz-stats">
+            <span>⏱️ <%= quiz.timeLimit %> min</span>
+            <a href="/quiz/<%= quiz.id %>" class="btn btn-primary">Start</a>
+          </div>
+        </div>
+      <% }); %>
     </section>
   </main>
 
@@ -51,72 +51,6 @@
   <script src="/js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= quiz.title %> | Studix01.net</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar container">
+      <a href="/" class="logo">📚 Studix01</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/quizzes">Quizzes</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="card">
+        <h1><%= quiz.title %></h1>
+        <p class="text-muted"><%= quiz.subject %> • <%= quiz.questions %> questions • <%= quiz.timeLimit %> minutes</p>
+
+        <div class="quiz-form" style="margin-top: 2rem;">
+          <div class="card" style="margin-bottom: 1rem;">
+            <p>1. Which of the following is a key concept in this subject?</p>
+            <label><input type="radio" name="q1" value="a"> A. Application</label><br>
+            <label><input type="radio" name="q1" value="b"> B. Review</label><br>
+            <label><input type="radio" name="q1" value="c"> C. Practice</label><br>
+            <label><input type="radio" name="q1" value="d"> D. Analysis</label>
+          </div>
+
+          <div class="card" style="margin-bottom: 1rem;">
+            <p>2. What is the best way to improve understanding?</p>
+            <label><input type="radio" name="q2" value="a"> A. Read and revise consistently</label><br>
+            <label><input type="radio" name="q2" value="b"> B. Ignore the syllabus</label><br>
+            <label><input type="radio" name="q2" value="c"> C. Skip exercises</label><br>
+            <label><input type="radio" name="q2" value="d"> D. Memorize without checking</label>
+          </div>
+
+          <input type="hidden" id="quiz-id" value="<%= quiz.id %>">
+          <button class="btn btn-primary" onclick="submitQuiz()">Submit Quiz</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-bottom container">
+      <p>© 2024 Studix01.net</p>
+    </div>
+  </footer>
+  <script src="/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

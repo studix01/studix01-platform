@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subjects | Studix01.net</title>
+  <title>Exercises | Studix01.net</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,9 +14,8 @@
         <li><a href="/">Home</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="/lessons">Lessons</a></li>
-        <li><a href="/books">Books</a></li>
+        <li><a href="/exercises">Exercises</a></li>
         <li><a href="/quizzes">Quizzes</a></li>
-        <li><a href="/ai-assistant">AI Assistant</a></li>
       </ul>
       <button id="theme-toggle" class="theme-toggle">🌙</button>
     </div>
@@ -24,20 +23,23 @@
 
   <main class="container">
     <section class="hero">
-      <h1>📚 All Subjects</h1>
-      <p>Study smarter across your school subjects.</p>
+      <h1>✏️ Exercises</h1>
+      <p>Practice with exercises to reinforce what you learn.</p>
     </section>
 
     <section class="section">
-      <div class="subjects-grid">
+      <div class="lessons-grid">
         <% subjects.forEach(subject => { %>
-          <a href="/subject/<%= subject.id %>" class="subject-link">
-            <div class="card subject-card" style="background: <%= subject.color %>;">
-              <div class="icon"><%= subject.icon %></div>
-              <h3><%= subject.name %></h3>
-              <p><%= subject.lessons %> lessons</p>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-primary"><%= subject.name %></span>
+              <h3>Practice Set</h3>
+              <p class="text-muted">Questions for structured learning and revision.</p>
             </div>
-          </a>
+            <div class="lesson-actions">
+              <button class="btn btn-primary btn-small">Start</button>
+            </div>
+          </div>
         <% }); %>
       </div>
     </section>
@@ -51,34 +53,6 @@
   <script src="/js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

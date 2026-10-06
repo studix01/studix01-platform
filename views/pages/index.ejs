@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studix01.net | Free Online Learning Platform</title>
+  <meta name="description" content="Studix01.net is a free online learning platform for students to learn, revise, practice, and get AI study support.">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar container">
+      <a href="/" class="logo">📚 Studix01</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/subjects">Subjects</a></li>
+          <li><a href="/lessons">Lessons</a></li>
+          <li><a href="/books">Books & Notes</a></li>
+          <li><a href="/exercises">Exercises</a></li>
+          <li><a href="/quizzes">Quizzes</a></li>
+          <li><a href="/revision">Exam Revision</a></li>
+          <li><a href="/ai-assistant">AI Assistant</a></li>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="mobile-menu" aria-label="Open navigation">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>🎓 Welcome to Studix01.net</h1>
+      <p>Your free online learning platform for smarter study, revision, and success.</p>
+      <form id="search-form" class="search-bar" action="/search" method="GET">
+        <input type="text" id="search-input" name="q" placeholder="Search lessons, books, notes, or subjects..." required>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">📚 Subject Categories</h2>
+      <div class="subjects-grid">
+        <% subjects.forEach(subject => { %>
+          <a href="/subject/<%= subject.id %>" class="subject-link">
+            <div class="card subject-card" style="background: <%= subject.color %>;">
+              <div class="icon"><%= subject.icon %></div>
+              <h3><%= subject.name %></h3>
+              <p><%= subject.lessons %> lessons</p>
+            </div>
+          </a>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">⭐ Popular Lessons</h2>
+      <div class="lessons-grid">
+        <% lessons.slice(0, 6).forEach(lesson => { %>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-primary"><%= lesson.class %></span>
+              <h3><%= lesson.title %></h3>
+              <p class="text-muted"><%= lesson.subject %></p>
+              <div class="lesson-meta">
+                <span>👀 <%= lesson.views %></span>
+                <span>❤️ <%= lesson.likes %></span>
+                <span>📘 <%= lesson.level %></span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <a href="/lesson/<%= lesson.id %>" class="btn btn-primary btn-small">Read</a>
+              <button class="btn-icon" onclick="likeLessom(<%= lesson.id %>)">❤️</button>
+              <button class="btn-icon" onclick="saveLessom(<%= lesson.id %>)">📌</button>
+              <button class="btn-icon" onclick="shareLessom('<%= lesson.title %>')">📤</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">📖 Latest Study Materials</h2>
+      <div class="lessons-grid">
+        <% lessons.slice(3, 9).forEach(lesson => { %>
+          <div class="card lesson-card">
+            <div class="content">
+              <span class="badge badge-success"><%= lesson.level %></span>
+              <h3><%= lesson.title %></h3>
+              <p class="text-muted"><%= lesson.subject %> • <%= lesson.class %></p>
+              <div class="lesson-meta">
+                <span>📄 Notes</span>
+                <span>📥 Download</span>
+                <span>⏱️ 15 min</span>
+              </div>
+            </div>
+            <div class="lesson-actions">
+              <a href="/lesson/<%= lesson.id %>" class="btn btn-secondary btn-small">Open</a>
+              <button class="btn-icon" onclick="saveLessom(<%= lesson.id %>)">💾</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">🧪 Quiz Challenge</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <% quizzes.forEach(quiz => { %>
+          <div class="card quiz-card">
+            <div class="quiz-info">
+              <h3><%= quiz.title %></h3>
+              <p><%= quiz.subject %> • <%= quiz.questions %> Questions</p>
+            </div>
+            <div class="quiz-stats">
+              <span>⏱️ <%= quiz.timeLimit %> min</span>
+              <a href="/quiz/<%= quiz.id %>" class="btn btn-primary">Take Quiz</a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </section>
+
+    <section class="ai-section">
+      <h2>🤖 AI Study Assistant</h2>
+      <p>Need help with a difficult topic? Ask the AI tutor to explain it in a simple way.</p>
+      <a href="/ai-assistant" class="btn btn-primary">Start AI Help</a>
+    </section>
+
+    <section class="section text-center">
+      <h2 class="section-title">🚀 Ready to Learn?</h2>
+      <div class="cta-row">
+        <a href="/lessons" class="btn btn-primary">Start Learning</a>
+        <a href="/quizzes" class="btn btn-secondary">Take a Quiz</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content container">
+      <div class="footer-section">
+        <h4>📚 Studix01.net</h4>
+        <p>Free online learning for students with lessons, notes, quizzes, and AI support.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="/subjects">Subjects</a>
+        <a href="/lessons">Lessons</a>
+        <a href="/books">Books & Notes</a>
+        <a href="/quizzes">Quizzes</a>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact</a>
+        <a href="/dashboard">Student Dashboard</a>
+        <a href="/ai-assistant">AI Assistant</a>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2024 Studix01.net. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

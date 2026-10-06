@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Subjects | Studix01.net</title>
+  <title>Search | Studix01.net</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -14,9 +14,6 @@
         <li><a href="/">Home</a></li>
         <li><a href="/subjects">Subjects</a></li>
         <li><a href="/lessons">Lessons</a></li>
-        <li><a href="/books">Books</a></li>
-        <li><a href="/quizzes">Quizzes</a></li>
-        <li><a href="/ai-assistant">AI Assistant</a></li>
       </ul>
       <button id="theme-toggle" class="theme-toggle">🌙</button>
     </div>
@@ -24,22 +21,31 @@
 
   <main class="container">
     <section class="hero">
-      <h1>📚 All Subjects</h1>
-      <p>Study smarter across your school subjects.</p>
+      <h1>🔎 Search Results</h1>
+      <p>Search query: <%= query || 'all materials' %></p>
     </section>
 
     <section class="section">
-      <div class="subjects-grid">
-        <% subjects.forEach(subject => { %>
-          <a href="/subject/<%= subject.id %>" class="subject-link">
-            <div class="card subject-card" style="background: <%= subject.color %>;">
-              <div class="icon"><%= subject.icon %></div>
-              <h3><%= subject.name %></h3>
-              <p><%= subject.lessons %> lessons</p>
+      <% if (results.length > 0) { %>
+        <div class="lessons-grid">
+          <% results.forEach(result => { %>
+            <div class="card lesson-card">
+              <div class="content">
+                <h3><%= result.title %></h3>
+                <p class="text-muted"><%= result.subject %> • <%= result.class %></p>
+              </div>
+              <div class="lesson-actions">
+                <a href="/lesson/<%= result.id %>" class="btn btn-primary btn-small">Open</a>
+              </div>
             </div>
-          </a>
-        <% }); %>
-      </div>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <div class="card text-center">
+          <h3>No results found</h3>
+          <p>Please try another keyword.</p>
+        </div>
+      <% } %>
     </section>
   </main>
 
@@ -51,67 +57,6 @@
   <script src="/js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
